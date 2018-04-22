@@ -1,0 +1,57 @@
+@import '../../styles.scss';
+
+.stock {
+  display: inline-block;
+  margin: auto;
+  margin: 10px 0 !important;
+}
+
+.center-align {
+  @extend %text-center-align;
+}
+
+a {
+  text-decoration: none;
+}
+
+.grow {
+  transition: all 0.1s ease-in-out;
+}
+
+.grow:hover {
+  transform: scale(1.1);
+}
+
+.fab-button {
+  float: right;
+}
+
+span {
+  cursor: pointer;
+}
+p {
+  margin: auto;
+}
+
+.rotate {
+  transition: all 0.3s ease-in-out 0s;
+}
+
+.rotate:hover {
+  transform: rotate(180deg);
+  transition: all 0.3s ease-in-out 0s;
+}
+
+.dashboard-control {
+  float: right;
+
+  button {
+    margin: 10px 0;
+    width: 100%;
+  }
+}
+
+.makeit-big {
+  font-size: 30px;
+  font-weight: bold;
+}

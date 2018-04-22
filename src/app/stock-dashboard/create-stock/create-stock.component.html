@@ -1,0 +1,47 @@
+<app-navigation toolbarTitle='TRACK A NEW STOCK' [goBackAllowed]='goBackAllowed'>
+</app-navigation>
+<div class="container">
+  <div class="container-fluid">
+    <br>
+    <mat-card class="center-align" [@entraceAnimation]>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Add a new stock" class="upperCase" [formControl]="stockName" (keyup)="searchTerm$.next($event.target.value)"
+          autocomplete="off" autofocus maxlength="5">
+      </mat-form-field>
+      <div *ngIf="loading">
+        <app-loader *ngIf="loading" message="Looking for stocks...">
+        </app-loader>
+        <div *ngIf="message">
+          <p>
+            {{message}}
+          </p>
+        </div>
+      </div>
+      <div *ngIf="!loading">
+        <div *ngIf="message">
+          <p>
+            {{message}}
+          </p>
+        </div>
+        <mat-card *ngFor="let stock of filteredOptions | async | slice:0:20" class="stock" [@entraceAnimation]>
+
+          <mat-card-title>
+            <h1>
+              {{ stock.symbol }}
+            </h1>
+          </mat-card-title>
+          <a (click)="addStock(stock.symbol)">
+            <i class="fas fa-plus">Add Stock</i>
+          </a>
+          <mat-card-content>
+            <p>
+              {{ stock.description }}
+            </p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </mat-card>
+    <br>
+
+  </div>
+</div>

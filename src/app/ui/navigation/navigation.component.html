@@ -1,0 +1,11 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row class="headerAlign">
+    <div [@arrowAnimation]>
+      <a routerLink="/stock-dashboard" *ngIf="goBackAllowed">
+        <i class="fas fa-arrow-left goLeft"></i>
+      </a>
+    </div>
+
+    <h1>{{toolbarTitle}}</h1>
+  </mat-toolbar-row>
+</mat-toolbar>

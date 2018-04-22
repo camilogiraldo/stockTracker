@@ -1,0 +1,34 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+%center-align {
+  width: 50% !important;
+  margin: auto !important;
+  text-align: center !important;
+}
+
+body {
+  background: linear-gradient(110deg, #fdcd3b 60%, #ffed4b 60%);
+}
+
+h1 {
+  color: #2c3e50;
+}
+h2 {
+  font-family: 'Coda', cursive;
+}
+
+p {
+  font-family: 'Nanum Gothic Coding', monospace;
+}
+
+%text-center-align {
+  text-align: center;
+}
+
+th {
+  font-family: 'Coda', cursive;
+}
+td {
+  font-family: 'ABeeZee', sans-serif;
+}

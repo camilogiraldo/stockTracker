@@ -1,0 +1,46 @@
+<app-navigation toolbarTitle='STOCKS OVERVIEW'></app-navigation>
+<div class="container">
+  <div class="container-fluid">
+    <div *ngIf="loading">
+      <app-loader class="center-align" message="Retrieving stock information..."></app-loader>
+    </div>
+    <br>
+    <div class="dashboard-control col-md-3" *ngIf="!loading" [@controlAnimation]>
+      <span class="rotate" matTooltip="Adjust interval" (click)="openDialog()" matTooltipPosition="left">
+        <i class="fas fa-cog rotate"></i>
+      </span> |
+      <mat-slide-toggle [color]="color" [checked]="checked" (change)="onAutoUpdate()">
+        <p>Auto update</p>
+      </mat-slide-toggle>
+      <br>
+      <button mat-raised-button color="primary" (click)="onNewStock()">ADD NEW STOCK</button>
+    </div>
+    <div *ngIf="startMessage" class="col-md-9 center-align">
+      <p class="makeit-big">{{startMessage}}</p>
+    </div>
+    <div class="col-md-3 stock" *ngFor="let stockElement of trackedStocks;  index as i" [@stockAnimation]>
+      <mat-card class="stock" class="grow">
+        <a>
+          <div (click)="onDelete(stockElement['1. symbol'], i)" style="cursor: pointer;">
+            <i class="fas fa-trash-alt" style="float: right;"></i>
+          </div>
+        </a>
+        <a [routerLink]="['/detail',  stockElement['1. symbol']]">
+          <mat-card-title>
+            <h1>{{ stockElement['1. symbol'] }}</h1>
+          </mat-card-title>
+          <mat-card-subtitle>
+            <h2>
+              {{stockElement['2. price'] | currency}}
+            </h2>
+          </mat-card-subtitle>
+          <mat-card-content>
+            <p>
+              Volume: {{stockElement['3. volume'] }} units.
+            </p>
+          </mat-card-content>
+        </a>
+      </mat-card>
+    </div>
+  </div>
+</div>

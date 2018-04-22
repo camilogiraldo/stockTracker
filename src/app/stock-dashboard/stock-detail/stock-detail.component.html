@@ -1,0 +1,59 @@
+<app-navigation [toolbarTitle]='toolbarTitle' [goBackAllowed]='goBackAllowed'>
+</app-navigation>
+<div class="container">
+  <div class="container-fluid ">
+    <mat-tab-group>
+      <mat-tab position="0" label="Table view">
+        <div class="col-md-12">
+          <br>
+          <mat-card [@entraceAnimation]="showCard">
+            <div *ngIf="loading">
+              <app-loader class="text-center-align" message="Loading stock detail..."></app-loader>
+            </div>
+            <div *ngIf="errorMessage" class="text-center-align">
+              <p>{{errorMessage}}</p>
+            </div>
+            <table class="table table-striped" *ngIf="!loading && !errorMessage">
+              <thead>
+                <tr>
+                  <th scope="col">Time</th>
+                  <th scope="col">Open</th>
+                  <th scope="col">Close</th>
+                  <th scope="col">High</th>
+                  <th scope="col">Low</th>
+                  <th scope="col">Volume</th>
+                </tr>
+              </thead>
+              <tbody *ngIf="response">
+                <tr *ngFor="let stockDetail of stockData | slice:0:10">
+                  <td>{{stockDetail.time | date:'medium'}}</td>
+                  <td>{{stockDetail['1. open'] | currency}}</td>
+                  <td>{{stockDetail['2. high'] | currency}}</td>
+                  <td>{{stockDetail['3. low'] | currency}}</td>
+                  <td>{{stockDetail['4. close'] | currency}}</td>
+                  <td>{{stockDetail['5. volume']}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </mat-card>
+          <br>
+        </div>
+      </mat-tab>
+      <mat-tab label="Chart view">
+        <br>
+        <mat-card>
+          <div *ngIf="loading">
+            <app-loader class="text-center-align" message="Loading stock detail..."></app-loader>
+          </div>
+          <div *ngIf="errorMessage" class="text-center-align">
+            <p>{{errorMessage}}</p>
+          </div>
+          <div *ngIf="!loading && !errorMessage">
+            <app-chart-view [stockData]="stockData.slice(0,10)"></app-chart-view>
+          </div>
+        </mat-card>
+        <br>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>

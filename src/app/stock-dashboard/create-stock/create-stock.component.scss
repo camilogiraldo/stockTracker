@@ -1,0 +1,30 @@
+@import '../../../styles.scss';
+
+.stock {
+  margin: 10px 0 !important;
+  width: 100% !important;
+  @extend %center-align;
+}
+
+.center-align {
+  @extend %center-align;
+}
+
+input {
+  background-color: white;
+}
+
+.upperCase {
+  text-transform: uppercase;
+}
+.full-width {
+  width: 100%;
+  text-align: center;
+}
+
+i {
+  float: right;
+  color: #3f51b5;
+  text-transform: none;
+  cursor: pointer;
+}

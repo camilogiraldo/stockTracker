@@ -1,0 +1,9 @@
+<mat-form-field>
+  <mat-select placeholder="Update interval" [(value)]="valueSelected">
+    <mat-option *ngFor="let update of updateTime" [value]="update">
+      {{ update.label }}
+    </mat-option>
+  </mat-select>
+
+</mat-form-field>
+<button mat-raised-button color="primary" (click)="onSave()">Save</button>

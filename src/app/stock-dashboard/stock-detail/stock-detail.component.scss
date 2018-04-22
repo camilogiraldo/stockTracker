@@ -1,0 +1,18 @@
+@import '../../../styles.scss';
+
+.text-center-align {
+  @extend %text-center-align;
+}
+
+.center-align {
+  @extend %center-align;
+}
+
+::ng-deep mat-tab-header {
+  margin: auto !important;
+}
+
+::ng-deep .mat-tab-label-container {
+  margin: auto;
+  flex-grow: 0 !important;
+}
